@@ -1,36 +1,16 @@
-"use client";
-import { useAuth } from "@/lib/auth";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import "../styles/dashboard.css";
 
 export default function DashboardPage() {
-  const { user, logout } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/login"); // redirect if not logged in
-    }
-  }, [user, router]);
-
-  if (!user) return null;
-
   return (
-    <div className="min-h-screen p-8">
-      <header className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <div>
-          <span className="mr-4">{user.email}</span>
-          <button
-            onClick={logout}
-            className="px-3 py-1 border rounded hover:bg-gray-100"
-          >
-            Logout
-          </button>
-        </div>
-      </header>
-
-      <p>Welcome to your dashboard, {user.email} 👋</p>
+    <div className="dashboard-container">
+      <h1>Dashboard</h1>
+      <p>Welcome to your Inventory Management System Dashboard!</p>
+      <div className="dashboard-buttons">
+        <button className="dashboard-button"><i className="fas fa-box"></i> View Inventory</button>
+        <button className="dashboard-button"><i className="fas fa-plus"></i> Add Item</button>
+        <button className="dashboard-button"><i className="fas fa-chart-line"></i> Analytics</button>
+        <button className="dashboard-button"><i className="fas fa-cog"></i> Settings</button>
+      </div>
     </div>
   );
 }

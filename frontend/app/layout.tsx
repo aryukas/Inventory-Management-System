@@ -1,11 +1,10 @@
-// app/layout.tsx
-import "./styles/globals.css";
-import { AuthProvider } from "@/lib/auth"; // using absolute alias path for clarity
-import type { Metadata } from "next";
+//import "./styles/globals.css";
+import React from "react";
+import { AuthProvider } from "../lib/auth"; // ✅ import your AuthProvider
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Inventory Management System",
-  description: "A simple and efficient way to manage your inventory with Firebase authentication.",
+  description: "Inventory tracking dashboard",
 };
 
 export default function RootLayout({
@@ -15,13 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 antialiased">
-        {/* Wrap everything with AuthProvider to manage user sessions */}
-        <AuthProvider>
-          <main className="min-h-screen flex flex-col items-center justify-center">
-            {children}
-          </main>
-        </AuthProvider>
+      <body>
+        {/* ✅ Wrap all pages in AuthProvider */}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

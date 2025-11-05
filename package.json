@@ -4,5 +4,6 @@
     "jspdf": "^3.0.3",
     "recharts": "^3.3.0",
     "tailwindcss": "^4.1.16"
+
   }
 }

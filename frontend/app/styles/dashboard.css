@@ -1,0 +1,81 @@
+/* dashboard.css */
+
+/* Global layout */
+body {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  font-family: "Poppins", sans-serif;
+  color: #0d47a1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dashboard container */
+.dashboard-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem 3rem;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(13, 71, 161, 0.15);
+  border-radius: 20px;
+  text-align: center;
+}
+
+/* Heading */
+.dashboard-container h1 {
+  font-size: 2.2rem;
+  color: #0d47a1;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Subtext */
+.dashboard-container p {
+  font-size: 1.1rem;
+  color: #1565c0;
+  margin-bottom: 2rem;
+}
+
+/* Buttons group */
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Button style */
+.dashboard-button {
+  background: linear-gradient(135deg, #2196f3, #1565c0);
+  border: none;
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+}
+
+.dashboard-button:hover {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(13, 71, 161, 0.35);
+}
+
+/* Optional icon inside button */
+.dashboard-button i {
+  margin-right: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+
+  .dashboard-button {
+    width: 100%;
+  }
+}
