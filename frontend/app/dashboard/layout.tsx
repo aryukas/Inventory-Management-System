@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import "../styles/dashboard.css"; // ✅ correct path based on your structure
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
+import "../styles/dashboard.css";
 
 export default function DashboardLayout({
   children,
@@ -12,9 +12,17 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="dashboard-layout">
-      <Sidebar />
+      {/* Sidebar */}
+      <aside className="dashboard-sidebar">
+        <Sidebar />
+      </aside>
+
+      {/* Main Content Area */}
       <div className="dashboard-main">
-        <Topbar />
+        <header className="dashboard-topbar">
+          <Topbar />
+        </header>
+
         <main className="dashboard-content">{children}</main>
       </div>
     </div>

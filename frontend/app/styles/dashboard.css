@@ -1,81 +1,170 @@
-/* dashboard.css */
-
-/* Global layout */
-body {
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+/* ========== GLOBAL LAYOUT ========== */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #e9f3ff; /* Softer light-blue tone */
   font-family: "Poppins", sans-serif;
-  color: #0d47a1;
-  margin: 0;
-  padding: 0;
+  overflow: hidden;
 }
 
-/* Dashboard container */
-.dashboard-container {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2rem 3rem;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(13, 71, 161, 0.15);
-  border-radius: 20px;
+/* MAIN SECTION */
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  overflow-y: auto;
+  min-height: 100vh;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== TOPBAR ========== */
+.dashboard-topbar {
+  background: linear-gradient(90deg, #0d47a1, #1976d2);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dashboard-topbar button {
+  background: #f14343;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.dashboard-topbar button:hover {
+  background: #ff0000;
+  transform: scale(1.05);
+}
+
+/* ========== CONTENT AREA ========== */
+.dashboard-content {
+  flex: 1;
+  padding: 3rem 2rem;
+  background-color: #e8eff9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
+  animation: fadeIn 0.5s ease;
 }
 
 /* Heading */
-.dashboard-container h1 {
+.dashboard-content h1 {
   font-size: 2.2rem;
+  font-weight: 700;
   color: #0d47a1;
   margin-bottom: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
 }
 
 /* Subtext */
-.dashboard-container p {
+.dashboard-content p {
+  color: #374151;
   font-size: 1.1rem;
-  color: #1565c0;
   margin-bottom: 2rem;
+  line-height: 1.5;
 }
 
-/* Buttons group */
+/* ========== BUTTONS ========== */
+/* ========== FIXED BUTTONS SECTION ========== */
 .dashboard-buttons {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-/* Button style */
-.dashboard-button {
-  background: linear-gradient(135deg, #2196f3, #1565c0);
+/* Each button */
+.dashboard-buttons .link-btn {
+  background: linear-gradient(90deg, #1565c0, #42a5f5);
+  color: #ffffff;
   border: none;
-  color: #fff;
-  padding: 0.8rem 1.8rem;
   border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+  text-decoration: none;
+  min-width: 180px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 12px rgba(25, 118, 210, 0.3);
 }
 
-.dashboard-button:hover {
-  background: linear-gradient(135deg, #1976d2, #0d47a1);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(13, 71, 161, 0.35);
+/* Hover effect */
+.dashboard-buttons .link-btn:hover {
+  background: linear-gradient(90deg, #0d47a1, #1976d2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(21, 101, 192, 0.4);
 }
 
-/* Optional icon inside button */
-.dashboard-button i {
-  margin-right: 0.5rem;
+/* Click (active) state */
+.dashboard-buttons .link-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 6px rgba(21, 101, 192, 0.3);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .dashboard-container {
-    padding: 1.5rem;
+/* Mobile view */
+@media (max-width: 768px) {
+  .dashboard-buttons {
+    flex-direction: column;
   }
 
-  .dashboard-button {
+  .dashboard-buttons .link-btn {
+    width: 90%;
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+}
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar {
     width: 100%;
+    position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 2rem 1rem;
+  }
+
+  .dashboard-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .dashboard-buttons .link-btn {
+    width: 80%;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

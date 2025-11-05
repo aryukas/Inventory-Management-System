@@ -1,24 +1,31 @@
-/* sidebar.css */
-
-/* Sidebar container */
+/* ================================
+   SIDEBAR CONTAINER
+================================ */
 .sidebar {
   background: linear-gradient(180deg, #1565c0, #0d47a1);
   color: #fff;
   width: 250px;
   min-height: 100vh;
-  transition: all 0.3s ease;
   padding: 1.5rem;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  transition: width 0.3s ease, padding 0.3s ease;
+  overflow-x: hidden;
 }
 
+/* Collapsed Sidebar */
 .sidebar.collapsed {
   width: 80px;
   padding: 1.5rem 0.5rem;
 }
 
-/* Header */
+/* ================================
+   HEADER SECTION
+================================ */
 .sidebar-header {
   display: flex;
   align-items: center;
@@ -27,12 +34,21 @@
 }
 
 .sidebar-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
-/* Toggle button */
+.sidebar.collapsed .sidebar-title {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================================
+   TOGGLE BUTTON
+================================ */
 .toggle-btn {
   background: linear-gradient(135deg, #2196f3, #1565c0);
   border: none;
@@ -46,10 +62,12 @@
 
 .toggle-btn:hover {
   background: linear-gradient(135deg, #1976d2, #0d47a1);
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
-/* Links */
+/* ================================
+   SIDEBAR LINKS
+================================ */
 .sidebar-links {
   list-style: none;
   padding: 0;
@@ -70,12 +88,22 @@
 }
 
 .sidebar-link .icon {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-right: 1rem;
   min-width: 24px;
   text-align: center;
 }
 
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: translateX(4px);
+  box-shadow: 0 3px 8px rgba(21, 101, 192, 0.3);
+}
+
+/* ================================
+   COLLAPSED VIEW BEHAVIOR
+================================ */
 .sidebar.collapsed .sidebar-link {
   justify-content: center;
 }
@@ -84,24 +112,45 @@
   margin-right: 0;
 }
 
-.sidebar-link:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(4px);
-  color: #fff;
-  box-shadow: 0 3px 8px rgba(21, 101, 192, 0.3);
+.sidebar.collapsed .sidebar-link span {
+  display: none;
 }
 
-/* Smooth collapse animation */
+/* ================================
+   TRANSITIONS & SMOOTHNESS
+================================ */
 .sidebar,
 .sidebar * {
   transition: all 0.3s ease;
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
-    z-index: 1000;
-    height: 100%;
+    height: 100vh;
+    top: 0;
+    left: -250px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* Optional backdrop for mobile */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 150;
+    display: none;
+  }
+
+  .sidebar.open + .sidebar-overlay {
+    display: block;
   }
 }
